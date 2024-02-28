@@ -11,13 +11,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
+//example
 const Pool = require('pg').Pool
 const db = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'gistda',
-    password: 'postgres',
+    database: 'Wildfire',
+    password: 'Wildfire',
     port: 5432
 });
 
@@ -28,7 +28,7 @@ app.listen(80, () => {
 
 app.get('/api_format', (req, res) => {
 
-    const sql = 'SELECT *,st_asgeojson(geom) as geojson FROM "workk";'
+    const sql = 'SELECT *,st_asgeojson(geom) as geojson FROM "Wildfire";'
 
     let geometry = [];
     let properties = [];
@@ -64,7 +64,7 @@ app.get('/api_format', (req, res) => {
 
 app.get('/api1', (req, res) => {
 
-    const sql = 'SELECT *,st_asgeojson(geom) as geojson FROM "workk";'
+    const sql = 'SELECT *,st_asgeojson(geom) as geojson FROM "Wildfire";'
 
     let jsonFeatures = [];
     db.query(sql).then((data) => {
@@ -98,7 +98,7 @@ app.get("/api/paridc/:id", (req, res) => {
     const id = req.params.id;
     //console.log(id)
       const sql = {
-        text:  "SELECT *,st_asgeojson(geom) as geojson FROM workk where id = " +
+        text:  "SELECT *,st_asgeojson(geom) as geojson FROM Wildfire where id = " +
         id +";"  
       };
       //console.log(province)
